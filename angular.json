@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "jurema": {
+    "bolsa-familia-chart": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/jurema",
+            "outputPath": "dist/bolsa-familia-chart",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,7 +28,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/scss/styles.scss"
             ],
             "scripts": []
           },
@@ -62,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "jurema:build"
+            "browserTarget": "bolsa-familia-chart:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "jurema:build:production"
+              "browserTarget": "bolsa-familia-chart:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "jurema:build"
+            "browserTarget": "bolsa-familia-chart:build"
           }
         },
         "test": {
@@ -88,6 +89,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -110,15 +112,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "jurema:serve"
+            "devServerTarget": "bolsa-familia-chart:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "jurema:serve:production"
+              "devServerTarget": "bolsa-familia-chart:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "jurema"
+    }
+  },
+  "defaultProject": "bolsa-familia-chart"
 }

@@ -1,0 +1,56 @@
+<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <p class="lead">Pesquise o relatorio dos ultimos 12 meses do bolsa familia da sua cidade.</p>
+</div>
+
+<div class="row" [formGroup]="formPesquisa">
+
+
+    <div class="col-md-6 col-sm-6">
+
+        <label for="estado">Estado</label>
+
+        <input formControlName="estado"
+            id="estado"
+            [typeahead]="estados"
+            [typeaheadOptionsLimit]="7"
+            [typeaheadMinLength]="1"
+            typeaheadOptionField="nome"
+            placeholder="Digite o nome do estado"
+            (typeaheadOnSelect)="estadoSelecionado($event)"
+            class="form-control">
+
+    </div>
+
+    <div class="col-md-6 col-sm-6">
+        <label for="municipio">Cidade</label>
+        <input formControlName="municipio"
+            id="municipio"
+            [typeahead]="municipios"
+            [typeaheadOptionsLimit]="7"
+            [typeaheadMinLength]="1"
+            typeaheadOptionField="nome"
+            placeholder="Digite o nome do municipio"
+            (typeaheadOnSelect)="municipioSelecionado($event)"
+            class="form-control">
+    </div>
+    
+    <div class="col-12 text-center pt-5" [hidden]="!isLoading">
+        <div class="spinner-border" role="status"></div>
+        <span class="status-message">
+            Carregando dados, aguarde...
+        </span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <google-chart class="pt-5" *ngIf="graficoInfo.data != null"
+            style="width: 95%; height:400px;"
+            [dynamicResize]="true"
+            [type]="'ColumnChart'" 
+            [options]="graficoInfo.options"
+            [columnNames]="graficoInfo.columnNames"
+            [data]="graficoInfo.data"
+        ></google-chart>
+    </div>
+</div>
